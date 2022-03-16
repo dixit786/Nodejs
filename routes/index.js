@@ -11,11 +11,10 @@ router.get('/', function(req, res, next) {
 
   //Auth
   if (!req.session.email) {
-    console.log("Email Session is Set");
-    res.end("Login required to Access this page");
+    res.render('index', { myemail : myemail, myid:myid });
+  }else{
+    req.redirect("/admin");
   }
-  // res.render('admin-home', { myemail: myemail });
-  res.render('index', { myemail : myemail, myid:myid });
 });
 
 module.exports = router;
